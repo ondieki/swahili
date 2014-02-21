@@ -128,16 +128,20 @@ class Stemmer:
         """step1c() Get rid of prefix complex Noun+verb, stripping off the propoun,tense,and object, leaving stem and suffix"""
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)[a-z]{4}')
         sol = p.match(self.b)
-        if(not sol):
+        if(not sol):    #this ones checks to see if word is a verb so we can stem it if it's a verb
             return False
         else: return True;
         
 
     def step2(self):
-        """step2() maps double suffices to single ones.
-        so -ization ( = -ize plus -ation) maps to -ize etc. note that the
-        string before the suffix must give m() > 0.
+        """step2() checks to see the various prefixes
+
         """
+        p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
+        sol = p.match(self.b)
+        
+        print self.b, '++++++++++++++ ',sol
+
         if self.b[self.k - 1] == 'a':
             if self.ends("ational"):   self.r("ate")
             elif self.ends("tional"):  self.r("tion")
@@ -269,8 +273,15 @@ class Stemmer:
 
         
         #print "*****#####",self.b
-        if(self.step1c()):self.step1ab() #only stem the verb form words rather than nouns
-        self.step2()
+        K = 0
+        if(self.step1c()):
+            K = 1
+            self.step1ab() #only stem the verb form words rather than nouns
+       
+        #If complex V+N, stem the prefix in order to parse the complex verb+Noun
+        if(K): 
+            self.step2()
+
         self.step3()
         self.step4()
         self.step5()
