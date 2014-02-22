@@ -157,6 +157,8 @@ class Stemmer:
             if token == "tu": return "us"
             if token == "mu":  return "you"
             if token == "u" : return "you"
+            if token == "a": return "he|she"
+
         if K == 1:
             #Time Tokens
             if token == "li": return "PT" #PAST TENSE
