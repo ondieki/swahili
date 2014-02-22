@@ -122,7 +122,8 @@ class Stemmer:
                 self.k = self.k - 2
             elif self.ends("a") and self.cons(self.k - 1):
                 self.k = self.k - 1
-
+            #print self.k, "<= self.k #### self.b => ",self.b[0:self.k+1]    
+            self.b = self.b[0:self.k+1]  
 
     def step1c(self):
         """step1c() Get rid of prefix complex Noun+verb, stripping off the propoun,tense,and object, leaving stem and suffix"""
@@ -135,45 +136,32 @@ class Stemmer:
 
     def step2(self):
         """step2() checks to see the various prefixes
-
+           #this checks to remove the first tokens that are for the Subject, Verb, Object. 
+           #What remains is the root of the verb
         """
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
-        sol = p.match(self.b)
-        
-        print self.b, '++++++++++++++ ',sol
+        p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(ni|tu|ku|mu|wa|o)?[a-z]{2}')
 
-        if self.b[self.k - 1] == 'a':
-            if self.ends("ational"):   self.r("ate")
-            elif self.ends("tional"):  self.r("tion")
-        elif self.b[self.k - 1] == 'c':
-            if self.ends("enci"):      self.r("ence")
-            elif self.ends("anci"):    self.r("ance")
-        elif self.b[self.k - 1] == 'e':
-            if self.ends("izer"):      self.r("ize")
-        elif self.b[self.k - 1] == 'l':
-            if self.ends("bli"):       self.r("ble") # --DEPARTURE--
-            # To match the published algorithm, replace this phrase with
-            #   if self.ends("abli"):      self.r("able")
-            elif self.ends("alli"):    self.r("al")
-            elif self.ends("entli"):   self.r("ent")
-            elif self.ends("eli"):     self.r("e")
-            elif self.ends("ousli"):   self.r("ous")
-        elif self.b[self.k - 1] == 'o':
-            if self.ends("ization"):   self.r("ize")
-            elif self.ends("ation"):   self.r("ate")
-            elif self.ends("ator"):    self.r("ate")
-        elif self.b[self.k - 1] == 's':
-            if self.ends("alism"):     self.r("al")
-            elif self.ends("iveness"): self.r("ive")
-            elif self.ends("fulness"): self.r("ful")
-            elif self.ends("ousness"): self.r("ous")
-        elif self.b[self.k - 1] == 't':
-            if self.ends("aliti"):     self.r("al")
-            elif self.ends("iviti"):   self.r("ive")
-            elif self.ends("biliti"):  self.r("ble")
-        elif self.b[self.k - 1] == 'g': # --DEPARTURE--
-            if self.ends("logi"):      self.r("log")
-        # To match the published algorithm, delete this phrase
+        sol = p2.findall(self.b)
+        
+        T = map(list,sol)
+        
+        L = T[0]
+
+        BEFORE = self.b
+        
+        for tok in L:
+            K = len(tok)
+            #print tok
+            if K > 0:
+                #print '***',tok, self.b
+                self.b = self.b[K:]
+
+        print self.b[0:self.k], '||+++++++||',self.b
+
+        #[('tu', 'li', '')]
+
+
 
     def step3(self):
         """step3() dels with -ic-, -full, -ness etc. similar strategy to step2."""
@@ -279,12 +267,15 @@ class Stemmer:
             self.step1ab() #only stem the verb form words rather than nouns
        
         #If complex V+N, stem the prefix in order to parse the complex verb+Noun
+        
+        print "VALUE of K:===>", K
+
         if(K): 
             self.step2()
 
-        self.step3()
-        self.step4()
-        self.step5()
+        #self.step3()
+        #self.step4()
+        #self.step5()
         return self.b[self.k0:self.k+1]
 
 
