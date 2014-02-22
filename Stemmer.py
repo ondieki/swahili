@@ -12,6 +12,7 @@ bavin2009@gmail.com
 import sys
 import string
 import re
+from collections import defaultdict
 
 class Stemmer:
 
@@ -30,6 +31,7 @@ class Stemmer:
         self.k = 0
         self.k0 = 0
         self.j = 0   # j is a general offset into the string
+        self.RESULT = defaultdict(lambda:[])
 
     def cons(self, i):
         """cons(i) is TRUE <=> b[i] is a consonant."""
@@ -101,29 +103,39 @@ class Stemmer:
            #CASES
            pigiliwa
         """
-        if self.b[self.k] == 'a':
-            if self.ends("lia"):
-                self.k = self.k - 3
-            elif self.ends("liana"):
-                self.k = self.k - 5
-            elif self.ends("eana"):
-                self.k = self.k - 4
-            elif self.ends("iana"):
-                self.k = self.k - 4
-            elif self.ends("iliwa"):
-                self.k = self.k - 5
-            elif self.ends("liwa"):
-                self.k = self.k - 4
-            elif self.ends("iwa"):
-                self.k = self.k - 3
-            elif self.ends("ana"):
-                self.k = self.k - 3
-            elif self.ends("ia"):
-                self.k = self.k - 2
-            elif self.ends("a") and self.cons(self.k - 1):
-                self.k = self.k - 1
-            #print self.k, "<= self.k #### self.b => ",self.b[0:self.k+1]    
-            self.b = self.b[0:self.k+1]  
+
+
+        self.KEY = self.b
+
+        if(len(self.b) > 4 and self.ends("kuwa")):
+            J= len(self.b)
+            self.b = self.b[0:J]
+            self.k = J
+        else:
+            if self.b[self.k] == 'a':
+                if self.ends("lia"):
+                    self.k = self.k - 3
+                elif self.ends("liana"):
+                    self.k = self.k - 5
+                elif self.ends("eana"):
+                    self.k = self.k - 4
+                elif self.ends("iana"):
+                    self.k = self.k - 4
+                elif self.ends("iliwa"):
+                    self.k = self.k - 5
+                elif self.ends("liwa"):
+                    self.k = self.k - 4
+                elif self.ends("iwa"):
+                    self.k = self.k - 3
+                elif self.ends("ana"):
+                    self.k = self.k - 3
+                elif self.ends("ia"):
+                    self.k = self.k - 2
+                elif self.ends("a") and self.cons(self.k - 1):
+                    self.k = self.k - 1
+
+                self.b = self.b[0:self.k+1]
+
 
     def step1c(self):
         """step1c() Get rid of prefix complex Noun+verb, stripping off the propoun,tense,and object, leaving stem and suffix"""
@@ -134,6 +146,35 @@ class Stemmer:
         else: return True;
         
 
+    def STO(self,token, K):
+
+        if token == "kuwa": return "were|will be|was"
+
+        if K == 0:
+            #Subject Tokens
+            if token == "wa": return "they"
+            if token == "ni": return "me"
+            if token == "tu": return "us"
+            if token == "mu":  return "you"
+            if token == "u" : return "you"
+        if K == 1:
+            #Time Tokens
+            if token == "li": return "PT" #PAST TENSE
+            if token == "na": return "PR"  #PRESENT TENSE
+            if token == "ta": return "FT"  #FUTURE TENSE
+            if token == "ki": return "PT-CT|PR-CT"
+
+        if K == 2:
+            #Object Tokens
+            if token == "m": return "him|her"
+            if token == "wa": return "them"
+            if token == "tu": return "us"
+            if token == "ni": return "me"
+            if token == "ki": return "it"
+    
+        #ku,
+
+
     def step2(self):
         """step2() checks to see the various prefixes
            #this checks to remove the first tokens that are for the Subject, Verb, Object. 
@@ -142,25 +183,25 @@ class Stemmer:
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
         p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(ni|tu|ku|mu|wa|o)?[a-z]{2}')
 
+        RESULT = []
         sol = p2.findall(self.b)
         
         T = map(list,sol)
-        
         L = T[0]
-
-        BEFORE = self.b
         
-        for tok in L:
+        for i in range(len(L)):
+            tok = L[i]
             K = len(tok)
             #print tok
+            if self.b == "kuwa": 
+                RESULT.append(self.STO(self.b,i))
+                break;
             if K > 0:
-                #print '***',tok, self.b
+                RESULT.append(self.STO(tok,i)) #process the subject, tense and object
                 self.b = self.b[K:]
 
-        print self.b[0:self.k], '||+++++++||',self.b
-
-        #[('tu', 'li', '')]
-
+        self.RESULT[self.KEY].append(self.b) #store stem in first index
+        self.RESULT[self.KEY].append(RESULT) #store result as a list whose key is the original word in sentence
 
 
     def step3(self):
@@ -252,15 +293,8 @@ class Stemmer:
         self.k = j
         self.k0 = i
         if self.k <= self.k0 + 1:
-            return self.b # --DEPARTURE--
+            return self.b 
 
-        # With this line, strings of length 1 or 2 don't go through the
-        # stemming process, although no mention is made of this in the
-        # published algorithm. Remove the line to match the published
-        # algorithm.
-
-        
-        #print "*****#####",self.b
         K = 0
         if(self.step1c()):
             K = 1
@@ -268,7 +302,7 @@ class Stemmer:
        
         #If complex V+N, stem the prefix in order to parse the complex verb+Noun
         
-        print "VALUE of K:===>", K
+        #print "VALUE of K:===>", self.b
 
         if(K): 
             self.step2()
@@ -276,6 +310,7 @@ class Stemmer:
         #self.step3()
         #self.step4()
         #self.step5()
+        print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
 
 
