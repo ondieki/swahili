@@ -303,9 +303,6 @@ class Stemmer:
             self.step1ab() #only stem the verb form words rather than nouns
        
         #If complex V+N, stem the prefix in order to parse the complex verb+Noun
-        
-        #print "VALUE of K:===>", self.b
-
         if(K): 
             self.step2()
 
