@@ -7,7 +7,7 @@ import re
 dict = {}
 POSTAG = {}
 
-print '#######USING DICT2 #########'
+print '######USING DICT2 ########'
 
 with open( 'dict2.txt', 'r' ) as df:
 	for line in df:
@@ -20,7 +20,7 @@ with open( 'dict2.txt', 'r' ) as df:
 # naive direct translation of sentence.txt
 with open('sentence.txt', 'r') as sf:
 	for line in sf:
-		#print line
+		# print line
 		tokens = re.findall(r'\w+', line.lower())
 		print tokens
 		translated = []
@@ -34,7 +34,7 @@ with open('sentence.txt', 'r') as sf:
 					translated.append(translations[i])
 				else:
 					translated.append( dict[word][0] )
-					
+
 				translated.append("["+POSTAG[word]+"]")
 			else:
 				translated.append( word )
