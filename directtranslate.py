@@ -31,7 +31,7 @@ with open('sentence.txt', 'r') as sf:
 				i = random.randint(0, k-1)
 				if k > 1: 
 					translated.append(translations[i])
-				else:translated.append( dict[word] )
+				else:translated.append( dict[word][0] )
 			else:
 				translated.append( word )
 		print ' '.join(translated)
