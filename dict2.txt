@@ -1,24 +1,24 @@
-baadhi: some
-ya : of 
+baadhi:some
+ya :of 
 waandamanaji: protesters
 pinga: oppose
-wanaoipinga: who are opposing-V
-serikali: government-N
+wanaoipinga: who are opposing
+serikali: government
 rush:throw
-walirusha: threw-V
+walirusha: threw
 mawe: stones
 na: and
 mabomu: bombs
 petroli: petrol
 shambu:attack
-kuwashambulia: attacked
+kuwashambulia: to attack
 polisi: police
 kuwa: be
 waliokuwa: who were
 zuia: prevent
-wanawazuia: were preventing
+wanawazuia: preventing them from
 andaman:protest
-kuandamana: to protest, march in protest
+kuandamana: protesting
 hadi: up to, towards
 makao: building
 bunge:parliament
@@ -46,17 +46,17 @@ ngazi: ladder
 iliyotupwa: thrown
 tupa: discard
 ndani: inside
-ya: of, for
+ya: of
 mugodi: mine, SYN:mgodi
 huo: that
-nasua:free
+nasu:free
 kujinasua: escape, save oneself from 
 siku: day
 jumatatu: Monday-N
 mwongoza: director
 filamu: film
 Uingereza: UK
-pata:get
+pat:get
 alipata: received
 tuzo:award
 bora:best, good
@@ -65,6 +65,7 @@ ilipata: receive, STEM:pat~
 ushindi: victory, STEM:shind~
 shinda: win, ^:shind~
 mbili: two
+tengenez: make
 utengenezaji: craftsmanship-N, production-N
 mzuri: good, high quality, excellent
 wa: of
@@ -76,6 +77,7 @@ taarifa: news, information
 vyombo: vessels, media, channels, SING:chombo
 shirika: organization
 hilo: that
+sem:sema
 linasema: says
 kuwa: that
 abiria: passengers
@@ -83,24 +85,28 @@ wote: all
 wako: are, SING:ako,yuko
 kamati: committee
 hiyo: that
+jumui:involve
 itajumuisha: will involve
 watu: people
 kutoka:from
 sekta:sector
-mbali mbali: various, different, range of ~
+mbali: various, different, range of ~
 ikiwemo: in addition to, including
 utumbuizaji: entertainment
 majeshi:armies, SING:jeshi
+pamban: handle, deal with
 yamepambana: have dealt with, STEM:pambana-deal with
 vikali: thoroughly;ADV
 waasi: rebels:N
+eneo:region
 maeneo: regions
 tofauti: different;ADJ
 mji: town, city;N
 kongamano: forum,congress;N
-linasema: says;V
+linasema: says
 abiria: passengers;N
 salama: safe;ADJ
+dhamiria: intend
 lilidhamiria: intended to;N, STEM-dhamir~
 kutafuta: look for;V
 mbinu: ways, means
@@ -111,7 +117,7 @@ hatari:danger;N
 kuangamia: extinction, death
 ni:it is
 wakati:time,season;N
-mgumu-hard, tough;ADJ
+mgumu:hard, tough;ADJ
 ambayo:which ;PRON
 inaarifiwa: informed(that);V
 shambulia:attack, #shambulia,shambuliwa;V
@@ -119,7 +125,7 @@ wahuni:criminals, SING:mhuni
 kocha:coach
 sema:say, STEM:sem~ 
 itatamba:top,win ~V
-dhidi-against #dhidi ya; PREP
+dhidi:against #dhidi ya; PREP
 operesheni: operation
 okoa:save #ku~ ;V
 chimba: dig
@@ -127,18 +133,20 @@ madini: precious stones, minerals
 kwama:stick, #walio~ stuck
 kwenye: in the
 shimo la mgodi: mine
+sitish:stop
 yasitishwa: put to a halt for a while, temporarily suspended
 mwaka: one year
 baada: after
 kumuua: killed, STEM: u~ 
 mpenzi:lover
 wake:his/her -PPRON
+zungumz:stop
 amezungumzia:has talked about, discussed
 majuto:regrets
 na:and 
-masikiti:sorrow
+masikitiko:sorrow
 yake:his/her -PPRON
-kuhusu-about
+kuhusu:about
 kifo:death
 cha:of
 mwanawe:child of
@@ -146,14 +154,18 @@ rais:president
 wa: of
 kusini:south 
 huenda:may, will possibly
+shitak:charge
 akashitakiwa: to be charged
+endesh:drive
 kuendesha:driving,running stomach, as in diarrhoea
 vibaya: severely, dangerously-ADJ 
 gari:car,vehicle
+ua:kill
 kumuua: killed
 mwanamke:woman
 mmoja:one
 hayati:late
+ach:leave
 aliacha:left
 mali:property
 yenye:which has -PPRON

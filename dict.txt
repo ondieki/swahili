@@ -1,6 +1,6 @@
 baadhi: some
 ya : of 
-waandamanaji: protesters-N
+waandamanaji: protesters
 wanaoipinga: who are opposing-V
 serikali: government-N
 walirusha: threw-V
@@ -97,7 +97,7 @@ hatari:danger;N
 kuangamia: extinction, death
 ni:it is
 wakati:time,season;N
-mgumu-hard, tough;ADJ
+mgumu:hard, tough;ADJ
 ambayo:which ;PRON
 inaarifiwa: informed(that);V
 shambulia:attack, #shambulia,shambuliwa;V
@@ -105,9 +105,9 @@ wahuni:criminals, SING:mhuni
 kocha:coach
 sema:say, STEM:sem~ 
 itatamba:top,win ~V
-dhidi-against #dhidi ya; PREP
+dhidi:against #dhidi ya; PREP
 operesheni: operation
-okoa:save #ku~ ;V
+okoa:save;V
 chimba: dig
 madini: precious stones, minerals
 kwama:stick, #walio~ stuck
@@ -124,7 +124,7 @@ majuto:regrets
 na:and 
 masikiti:sorrow
 yake:his/her -PPRON
-kuhusu-about
+kuhusu:about
 kifo:death
 cha:of
 mwanawe:child of
