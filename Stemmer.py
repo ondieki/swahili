@@ -127,6 +127,8 @@ class Stemmer:
                     self.k = self.k - 4
                 elif self.ends("iwa"):
                     self.k = self.k - 3
+                elif self.ends("jika") or self.ends("lika"):
+                    self.k = self.k - 3  #hitajika = hitaj, #kamilika = kamil
                 elif self.ends("ana"):
                     self.k = self.k - 3
                 elif self.ends("ia"):

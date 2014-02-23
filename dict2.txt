@@ -27,28 +27,36 @@ ingia:enter
 kuingia: enter
 robo: quarter
 fainali: finals
+hitaj:need
+kamil:complete, finish
 hitajika: require
 itahithitajika: it is required
+chapa:beat
+chapaa:money
 kuichapa: to beat
 mabao: goals, bao-SING,ma~
 matatu: three
+chimba:dig
 kwa: against, by means of means, by, versus, for
 Wachimbaji: excavators, miners
-migodi: mines, mgodi-SING,mi~
+migodi: mines
 hao: those
-walitumia: used
+tumia: used
 ngazi: ladder
 iliyotupwa: thrown
+tupa: discard
 ndani: inside
 ya: of, for
 mugodi: mine, SYN:mgodi
 huo: that
+nasua:free
 kujinasua: escape, save oneself from 
 siku: day
 jumatatu: Monday-N
 mwongoza: director
 filamu: film
 Uingereza: UK
+pata:get
 alipata: received
 tuzo:award
 bora:best, good
