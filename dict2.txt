@@ -1,184 +1,188 @@
-baadhi:some
-ya :of 
-waandamanaji: protesters
-pinga: oppose
-wanaoipinga: who are opposing
-serikali: government
-rush:throw
-walirusha: threw
-mawe: stones
-na: and
-mabomu: bombs
-petroli: petrol
-shambu:attack
-kuwashambulia: to attack
-polisi: police
-kuwa: be
-waliokuwa: who were
-zuia: prevent
-wanawazuia: preventing them from
-andaman:protest
-kuandamana: protesting
-hadi: up to, towards
-makao: building
-bunge:parliament
-ili: in order to
-ingia:enter
-kuingia: enter
-robo: quarter
-fainali: finals
-hitaj:need
-kamil:complete, finish
-hitajika: require
-itahithitajika: it is required
-chapa:beat
-chapaa:money
-kuichapa: to beat
-mabao: goals, bao-SING,ma~
-matatu: three
-chimba:dig
-kwa: against, by means of means, by, versus, for
-Wachimbaji: excavators, miners
-migodi: mines
-hao: those
-tumia: used
-ngazi: ladder
-iliyotupwa: thrown
-tupa: discard
-ndani: inside
-ya: of
-mugodi: mine, SYN:mgodi
-huo: that
-nasu:free
-kujinasua: escape, save oneself from 
-siku: day
-jumatatu: Monday-N
-mwongoza: director
-filamu: film
-Uingereza: UK
-pat:get
-alipata: received
-tuzo:award
-bora:best, good
-ambayo:which
-ilipata: receive, STEM:pat~ 
-ushindi: victory, STEM:shind~
-shinda: win, ^:shind~
-mbili: two
-tengenez: make
-utengenezaji: craftsmanship-N, production-N
-mzuri: good, high quality, excellent
-wa: of
-na: and
-ubunifu: creativity,  STEM: bun~
-mavazi: costumes, clothes
-katika: in, in the
-taarifa: news, information
-vyombo: vessels, media, channels, SING:chombo
-shirika: organization
-hilo: that
-sem:sema
-linasema: says
-kuwa: that
-abiria: passengers
-wote: all
-wako: are, SING:ako,yuko
-kamati: committee
-hiyo: that
-jumui:involve
-itajumuisha: will involve
-watu: people
-kutoka:from
-sekta:sector
-mbali: various, different, range of ~
-ikiwemo: in addition to, including
-utumbuizaji: entertainment
-majeshi:armies, SING:jeshi
-pamban: handle, deal with
-yamepambana: have dealt with, STEM:pambana-deal with
-vikali: thoroughly;ADV
-waasi: rebels:N
-eneo:region
-maeneo: regions
-tofauti: different;ADJ
-mji: town, city;N
-kongamano: forum,congress;N
-linasema: says
-abiria: passengers;N
-salama: safe;ADJ
-dhamiria: intend
-lilidhamiria: intended to;N, STEM-dhamir~
-kutafuta: look for;V
-mbinu: ways, means
-kulinda:protect;V
-wanyamapori: wild animals;N
-walio: who have, who are:PPRON*
-hatari:danger;N
-kuangamia: extinction, death
-ni:it is
-wakati:time,season;N
-mgumu:hard, tough;ADJ
-ambayo:which ;PRON
-inaarifiwa: informed(that);V
-shambulia:attack, #shambulia,shambuliwa;V
-wahuni:criminals, SING:mhuni
-kocha:coach
-sema:say, STEM:sem~ 
-itatamba:top,win ~V
-dhidi:against #dhidi ya; PREP
-operesheni: operation
-okoa:save #ku~ ;V
-chimba: dig
-madini: precious stones, minerals
-kwama:stick, #walio~ stuck
-kwenye: in the
-shimo la mgodi: mine
-sitish:stop
-yasitishwa: put to a halt for a while, temporarily suspended
-mwaka: one year
-baada: after
-kumuua: killed, STEM: u~ 
-mpenzi:lover
-wake:his/her -PPRON
-zungumz:stop
-amezungumzia:has talked about, discussed
-majuto:regrets
-na:and 
-masikitiko:sorrow
-yake:his/her -PPRON
-kuhusu:about
-kifo:death
-cha:of
-mwanawe:child of
-rais:president
-wa: of
-kusini:south 
-huenda:may, will possibly
-shitak:charge
-akashitakiwa: to be charged
-endesh:drive
-kuendesha:driving,running stomach, as in diarrhoea
-vibaya: severely, dangerously-ADJ 
-gari:car,vehicle
-ua:kill
-kumuua: killed
-mwanamke:woman
-mmoja:one
-hayati:late
-ach:leave
-aliacha:left
-mali:property
-yenye:which has -PPRON
-thamani:value, worth -N
-dola:dollar
-milioni:million
-nne:four
-alisema:he said
-igawanywe:divided
-kati ya:between ;PREP,ADV
-familia:family ;N
-shule:school;N
-chama:party, as in political group ;N
+baadhi:some #PP
+ya :of #PP
+afrika: Africa #N 
+waandamanaji: protesters #N
+pinga: oppose #V
+wanaoipinga: who are opposing #SVO
+serikali: government #N
+rush:throw #N
+walirusha: threw #V
+mawe: stones #V
+na: and #P
+mabomu: bombs #N
+petroli: petrol #N
+shambu:attack #V
+kuwashambulia: to attack #V
+polisi: police #V
+kuwa: be #V
+waliokuwa: who were #N
+zuia: prevent #V
+wanawazuia: preventing them from #V
+andaman:protest #V
+kuandamana: protesting #V
+hadi: up to, towards #PP
+makao: building #N
+bunge:parliament #N
+ili: in order to #PP
+ingia:enter #V
+kuingia: enter #V
+robo: quarter #ADJ
+fainali: finals #N
+hitaj:need  #V
+kamil:complete, finish #V
+hitajika: require #V
+itahithitajika: it is required #V
+chapa:beat #V
+chapaa:money #N
+kuichapa: to beat #V
+mabao: goals, bao #N
+matatu: three #ADJ
+chimba:dig  #V
+kwa: against, by means of means, by, versus, for #PP
+Wachimbaji: excavators, miners #ADJ
+migodi: mines #N
+hao: those #PP
+tumia: used #V
+ngazi: ladder #N
+iliyotupwa: thrown #ADJ
+tupa: discard #V
+ndani: inside #ADV
+ya: of #PP
+mugodi: mine #N
+huo: that #PP
+nasu:free ##V
+kujinasua: escape, save oneself from #V
+siku: day #N
+jumatatu: Monday #N
+mwongoza: director #N
+filamu: film #N
+Uingereza: UK #N
+pat:get #V
+alipata: received #V
+tuzo:award #N
+bora:best, good #ADJ
+ambayo:which #PP
+ilipata: receive #V
+ushindi: victory #N
+shinda: win      #V
+mbili: two       #ADJ
+tengenez: make   #V
+utengenezaji: craftsmanship, production #N
+mzuri: good, high quality, excellent    #ADJ
+wa: of   #PP
+na: and  #CONJ
+ubunifu: creativity #N
+mavazi: costumes, clothes #N
+katika: in, in the #PP
+taarifa: news, information #N
+vyombo: vessels, media, channels #N
+shirika: organization #N
+hilo: that #PP
+sem:sema #V
+linasema: says #V
+kuwa: that #PP
+abiria: passengers #N
+wote: ali #ADJ
+wako: are,ako,yuko #PP
+kamati: committee #N
+hiyo: that  #PP
+jumui: involve #V
+itajumuisha: will involve #V
+watu: people #N
+kutoka:from #PP
+sekta:sector #N
+mbali: various, different #ADJ
+ikiwemo: in addition to, including #PP
+utumbuizaji: entertainment #N
+majeshi:armies, #N
+pamban: handle, deal with #V
+yamepambana: have dealt with #V
+vikali: thoroughly #ADV
+waasi: rebels #N
+eneo:region #N
+maeneo: regions #N
+tofauti: different #ADJ
+mji: town, city #N
+kongamano: forum,congress #N
+linasema: says #V
+abiria: passengers #N
+salama: safe #ADJ
+dhamiria: intend #V
+lilidhamiria: intended to #V
+kutafuta: look for #V
+mbinu: ways, means #N
+kulinda:protect #V
+wanyamapori: wild animals #N
+walio: who have, who are #PP
+hatari:danger #N
+kuangamia: extinction, death #N
+ni:it is #PP
+wakati:time,season #N
+mgumu:hard, tough #ADJ
+ambayo:which #PP
+inaarifiwa: informed #V
+shambulia:attack #N
+wahuni:criminals #N
+kocha:coach #N
+sema:say  #V
+itatamba:top,win #V
+dhidi:against #CONJ
+operesheni: operation #N 
+okoa:save #V
+chimba: dig #V
+madini: minerals #N
+kwama:stick,stuck #V
+kwenye: in the #PP
+shimo la mgodi: mine #N
+sitish:stop #V
+yasitishwa: put to a halt for a while, temporarily suspended #V
+mwaka: one year #N
+baada: after #PP
+kumuua: killed #N
+ogop:afraid #V
+mpenzi:lover #N
+wake:his,her #PPN
+badil:change #V
+zungumz:talk #V
+amezungumzia:has talked about, discussed #V
+majuto:regrets #N
+na:and  #PPN
+masikitiko:sorrow #N
+masikiti:sorrow #N
+yake:his,her #PPN
+kuhusu:about #PP
+kifo:death #N
+cha:of #PP
+mwanawe:child of #N
+rais:president #N
+wa: of #PP
+kusini:South #ADJ
+huenda:may, will possibly #V
+shitak:charge #V
+akashitakiwa: to be charged #V
+endesh:drive #V
+kuendesha:driving #V
+vibaya: dangerously #ADV
+gari: car, vehicle #N
+ua:kill #V
+kumuua: killed #V
+mwanamke:woman #N
+mmoja:one #ADJ
+hayati:late #ADJ
+ach:leave #V
+aliacha:left #V
+mali:property #N
+yenye:which has #PPN
+thamani:value, worth #N
+dola:dollar #N
+milioni:million #N
+nne:four #N
+alisema:he said #V
+igawanywe:divided #V
+kati ya:between #CONJ
+familia:family #N
+shule:school #N
+chama:party, political group #N
 
 
 

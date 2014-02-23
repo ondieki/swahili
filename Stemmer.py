@@ -113,14 +113,17 @@ class Stemmer:
             self.k = J
         else:
             if self.b[self.k] == 'a':
+                if self.ends("eshwa"):
+                    self.RESULT[self.KEY].append("made to be")
+                    self.k = self.k - 5
                 if self.ends("lia"):
                     self.k = self.k - 3
                 elif self.ends("liana"):
+                    self.RESULT[self.KEY].append("on behalf of each other")
                     self.k = self.k - 5
-                elif self.ends("eana"):
+                elif self.ends("eana") or self.ends("iana"):
                     self.k = self.k - 4
-                elif self.ends("iana"):
-                    self.k = self.k - 4
+                    self.RESULT[self.KEY].append("at each other")
                 elif self.ends("iliwa"):
                     self.k = self.k - 5
                 elif self.ends("liwa"):
@@ -131,14 +134,15 @@ class Stemmer:
                     self.k = self.k - 3  #hitajika = hitaj, #kamilika = kamil
                 elif self.ends("ana"):
                     self.k = self.k - 3
+                    self.RESULT[self.KEY].append("each other")
                 elif self.ends("ia"):
                     self.k = self.k - 2
+                    self.RESULT[self.KEY].append("for")
                 elif self.ends("a") and self.cons(self.k - 1):
                     self.k = self.k - 1
 
                 self.b = self.b[0:self.k+1]
-
-
+            
     def step1c(self):
         """step1c() Get rid of prefix complex Noun+verb, stripping off the propoun,tense,and object, leaving stem and suffix"""
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)[a-z]{4}')
@@ -163,10 +167,10 @@ class Stemmer:
 
         if K == 1:
             #Time Tokens
-            if token == "li": return "PT" #PAST TENSE
-            if token == "na": return "PR"  #PRESENT TENSE
-            if token == "ta": return "FT"  #FUTURE TENSE
-            if token == "ki": return "PT-CT|PR-CT"
+            if token == "li": return "PT"    #"PT" #PAST TENSE
+            if token == "na": return "are"   #PRESENT TENSE
+            if token == "ta": return "will"  #FUTURE TENSE
+            if token == "ki": return "while" #"PT-CT|PR-CT"
 
         if K == 2:
             #Object Tokens
@@ -185,11 +189,10 @@ class Stemmer:
            #What remains is the root of the verb
         """
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
-        p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(ni|tu|ku|mu|wa|o)?[a-z]{2}')
+        p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)?(ni|tu|ku|mu|wa|cho)?[a-z]{2}')
 
         RESULT = []
         sol = p2.findall(self.b)
-        
         T = map(list,sol)
         L = T[0]
         
