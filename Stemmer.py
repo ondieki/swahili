@@ -301,6 +301,7 @@ class Stemmer:
         i <= k <= j. To turn the stemmer into a module, declare 'stem' as
         extern, and delete the remainder of this file.
         """
+        print 'stemming...',p
         if i is None:
             i = 0
         if j is None:
@@ -327,10 +328,24 @@ class Stemmer:
         #self.step5()
         print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
+    
+    def input(self, line):
+        p = Stemmer()
+
+        print line[0]
+
+        word = line[0]
+
+        output = ''
+
+        output += p.stem(word, 0,len(word)-1)
+        print 'INPUT: ',word, ' OUTPUT==>',output,'====>',self.RESULT[word]
+        #sys.exit()
 
 
 if __name__ == '__main__':
     p = Stemmer()
+    print '###HERE###'
     if len(sys.argv) > 1:
         for f in sys.argv[1:]:
             infile = open(f, 'r')

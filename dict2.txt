@@ -43,7 +43,7 @@ mabao: goals, bao #N
 matatu: three #ADJ
 chimba:dig  #V
 habari: news #N
-kwa: against, by means of means, by, versus, for #PP
+kwa: for #PP
 wachimbaji: excavators #ADJ
 migodi: mines #N
 hao: those #PP
@@ -102,7 +102,7 @@ ikiwemo: in addition to, including #PP
 utumbuizaji: entertainment #N
 majeshi:armies, #N
 pamban: handle, deal with #V
-yamepambana: have dealt with #V
+yamepambana: dealt with #V
 vikali: thoroughly #ADV
 waasi: rebels #N
 eneo:region #N
