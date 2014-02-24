@@ -145,7 +145,7 @@ class Stemmer:
             
     def step1c(self):
         """step1c() Get rid of prefix complex Noun+verb, stripping off the propoun,tense,and object, leaving stem and suffix"""
-        p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)[a-z]{4}')
+        p = re.compile('(ni|u|a|tu|m|mu|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)?[a-z]{4}')
         sol = p.match(self.b)
         if(not sol):    #this ones checks to see if word is a verb so we can stem it if it's a verb
             return False
@@ -158,6 +158,7 @@ class Stemmer:
 
         if K == 0:
             #Subject Tokens
+            if token == "ku": return "to"
             if token == "wa": return "they"
             if token == "ni": return "me"
             if token == "tu": return "us"
@@ -171,6 +172,8 @@ class Stemmer:
             if token == "na": return "are"   #PRESENT TENSE
             if token == "ta": return "will"  #FUTURE TENSE
             if token == "ki": return "while" #"PT-CT|PR-CT"
+            if token == "mu": return "him|her"
+
 
         if K == 2:
             #Object Tokens
@@ -191,15 +194,22 @@ class Stemmer:
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
         p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)?(ni|tu|ku|mu|wa|cho)?[a-z]{2}')
 
+        #regex 3 = (ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(ni|tu|ku|mu|wa|cho)?[a-z]{4}
+
         RESULT = []
         sol = p2.findall(self.b)
         T = map(list,sol)
-        L = T[0]
-        
+
+        if len(T) > 0: 
+            L = T[0]
+
+        for t in L:
+            if len(t) == 0:
+                L.remove(t)
+
         for i in range(len(L)):
             tok = L[i]
             K = len(tok)
-            #print tok
             if self.b == "kuwa": 
                 RESULT.append(self.STO(self.b,i))
                 break;
@@ -303,6 +313,7 @@ class Stemmer:
             return self.b 
 
         K = 0
+        
         if(self.step1c()):
             K = 1
             self.step1ab() #only stem the verb form words rather than nouns
@@ -329,6 +340,7 @@ if __name__ == '__main__':
                 line = infile.readline()
                 if line == '':
                     break
+                print "^^^^^^^^^^^^^^^",line
                 for c in line:
                     if c.isalpha():
                         word += c.lower()

@@ -24,6 +24,8 @@ hadi: up to, towards #PP
 makao: building #N
 bunge:parliament #N
 ili: in order to #PP
+gari:car #N
+magari:cars #N
 ingia:enter #V
 kuingia: enter #V
 robo: quarter #ADJ
@@ -33,18 +35,22 @@ kamil:complete, finish #V
 hitajika: require #V
 itahithitajika: it is required #V
 chapa:beat #V
+vya: #PP
+walitumia:used #V
 chapaa:money #N
 kuichapa: to beat #V
 mabao: goals, bao #N
 matatu: three #ADJ
 chimba:dig  #V
+habari: news #N
 kwa: against, by means of means, by, versus, for #PP
-Wachimbaji: excavators, miners #ADJ
+wachimbaji: excavators #ADJ
 migodi: mines #N
 hao: those #PP
+amesema:has said that #V
 tumia: used #V
 ngazi: ladder #N
-iliyotupwa: thrown #ADJ
+iliyotupwa: abandoned #ADJ
 tupa: discard #V
 ndani: inside #ADV
 ya: of #PP
@@ -56,11 +62,11 @@ siku: day #N
 jumatatu: Monday #N
 mwongoza: director #N
 filamu: film #N
-Uingereza: UK #N
+uingereza: UK #N
 pat:get #V
 alipata: received #V
 tuzo:award #N
-bora:best, good #ADJ
+bora:best #ADJ
 ambayo:which #PP
 ilipata: receive #V
 ushindi: victory #N
@@ -73,7 +79,7 @@ wa: of   #PP
 na: and  #CONJ
 ubunifu: creativity #N
 mavazi: costumes, clothes #N
-katika: in, in the #PP
+katika: in #PP
 taarifa: news, information #N
 vyombo: vessels, media, channels #N
 shirika: organization #N
@@ -100,6 +106,7 @@ yamepambana: have dealt with #V
 vikali: thoroughly #ADV
 waasi: rebels #N
 eneo:region #N
+pik:cook #V
 maeneo: regions #N
 tofauti: different #ADJ
 mji: town, city #N
@@ -125,8 +132,8 @@ shambulia:attack #N
 wahuni:criminals #N
 kocha:coach #N
 sema:say  #V
-itatamba:top,win #V
-dhidi:against #CONJ
+itatamba:will shine,will win #V
+dhidi: against #PP
 operesheni: operation #N 
 okoa:save #V
 chimba: dig #V
@@ -153,7 +160,7 @@ yake:his,her #PPN
 kuhusu:about #PP
 kifo:death #N
 cha:of #PP
-mwanawe:child of #N
+mwanawe:child of #ADJ
 rais:president #N
 wa: of #PP
 kusini:South #ADJ
