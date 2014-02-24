@@ -39,13 +39,9 @@ def wordorder(sentence, untagged):
 					break;
 		elif word == ['ADJ'] and j < K and sentence[i+2] == '[N]':
 			print 'TO DO'
-			#sys.exit()
-			#temp[i-1] = sentence[i+1]
-			#temp[i+1] = sentence[i-1]
-			#temp[i] = '[N]'
-			#sentence = temp;
+			#swich adjectives and nouns
 			#break;
-			
+
 	#remove two consecutive prepositions e.g. kutoka katika --> kutoka
 
 	return sentence		
