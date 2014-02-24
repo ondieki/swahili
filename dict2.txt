@@ -93,6 +93,7 @@ wako: are,ako,yuko #PP
 kamati: committee #N
 hiyo: that  #PP
 jumui: involve #V
+tamb:shine #V
 itajumuisha: will involve #V
 watu: people #N
 kutoka:from #PP
