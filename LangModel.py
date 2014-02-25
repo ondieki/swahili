@@ -60,7 +60,7 @@ class LangModel:
 	wordTrigrams = nltk.trigrams(words)
 	slogprob = 0
 	for wordTrigram in wordTrigrams:
-	  print 'trigram: ',wordTrigram
+	  # print 'trigram: ',wordTrigram
 	  logprob = self.logprob(wordTrigram)
 	  slogprob += logprob
 	sp = slogprob / len(words)
