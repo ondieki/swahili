@@ -4,3 +4,5 @@
 
 2. Use a model to find best sentence for what we have at this time
 
+
+3. Start working on error analysis hopefully by sometime tonight 2/25/2014
