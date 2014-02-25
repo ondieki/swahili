@@ -20,9 +20,9 @@ with open( 'dict2.txt', 'r' ) as df:
 			POSTAG[elements[0]] = elements[1].split('#')[1]
 			dict[ elements[0] ] = elements[1].split('#')[0].split(',')
 
-
 def wordorder(sentence, swahili):
 	#Transform V - N -ADJ to V-ADJ-N
+	
 	K = len(sentence)
 	print K, "+++++++++++++++++TRANSFORMING#############",tokens
 	
@@ -31,6 +31,21 @@ def wordorder(sentence, swahili):
 	temp = copy.deepcopy(sentence)
 	for i in range(K):
 		word = sentence[i]
+		if word == '[V]' and sentence[i+1] == '[ADV]': #and sentence[i+4] == '[N]':
+			#stem = Stemmer()
+			#if len(word.split(',')) == 1: 
+			#	stem.input(swahili[i-1])
+			
+			k = i+2
+
+			temp[k-1] = sentence[k+1]
+			temp[k] = '[N]'
+			temp[k+1] = sentence[k-1]
+			temp[k+2] = "[ADV]"
+			sentence = temp
+			#break;
+			print '####################', sentence
+
 		if word == '[N]':
 			j = i + 2
 			if j < K: #possible to have an adjective after noun
@@ -41,21 +56,12 @@ def wordorder(sentence, swahili):
 					temp[i+2] = "[N]"
 					sentence = temp
 					break;
-		elif word == '[ADJ]' and j < K and sentence[i+2] == '[N]':
+		if word == '[ADJ]' and j < K and sentence[i+2] == '[N]':
 			print 'TO DO'
 			#swich adjectives and nouns
 			#break;
-		elif word == '[V]':#and sentence[i+2] == '[ADV]':
-			stem = Stemmer()
-			if len(word.split(',')) == 1: 
-				stem.input(swahili[i-1])
-			#temp[i-1] = sentence[i+1]
-			#temp[i] = '[ADV]'
-			#temp[i+1] = sentence[i-1]
-			#temp[i+2] = "[V]"
-			#sentence = temp
-			#print '####################', sentence
 		
+			
 		#TAKE CARE OF PREPOSITIONAL PHRASES LIKE BAADA YA
 
 			#break;
