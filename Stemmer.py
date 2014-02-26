@@ -32,6 +32,7 @@ class Stemmer:
         self.b = ""  # buffer for word to be stemmed
         self.k = 0
         self.k0 = 0
+        self.FTense = None
         self.j = 0   # j is a general offset into the string
         self.RESULT = defaultdict(lambda:[])
         self.DICT = defaultdict(lambda:'')
@@ -169,18 +170,20 @@ class Stemmer:
             if token == "u" : return "you"
             if token == "a": return "he"
             if token == "i": return "it"
-            if token == "li": return "it"     
-
+            if token == "li": return "it" 
+            if token == "ya": 
+                self.FTense = 'PT'
+                return "have"
 
 
         if K == 1:
             #Time Tokens
             if token == "li": return " ,PT"      #"PT" #PAST TENSE
-            if token == "na": return "is,PR"   #PRESENT TENSE
-            if token == "ta": return "will,FT"  #FUTURE TENSE
+            if token == "na": return "is,PR"     #PRESENT TENSE
+            if token == "ta": return "will,FT"   #FUTURE TENSE
             if token == "ki": return "while, "   #"PT-CT|PR-CT"
             if token == "mu": return "him, "
-            if token == "me": return "has, "
+            if token == "me": return " , "
             if token == "wa": return "them, "
 
 
@@ -224,16 +227,12 @@ class Stemmer:
                 newL.append(t)
         
         L = newL
-
-        print 'THE FOUND LIST: ',L
         
         for i in range(len(L)):
             tok = L[i]
 
             if i == 1:
                 w = self.STO(tok,i)
-                print w, " w######CHECKING*******tok ", tok, '  self.b: ' ,self.b
-
                 w = w.split(',')
                 TENSE = w[1]
                 print TENSE
@@ -257,26 +256,31 @@ class Stemmer:
             lemma = self.DICT[self.b]
             
         lemma = lemma[0].split(' ')[0]
-
+                
         #convert tense of english version of lemma at this point    
-        if TENSE != None:
-            if TENSE == 'PT':
+        if TENSE != None or self.FTense != None:
+            if TENSE == 'PT' or self.FTense == 'PT':
                 try:
                     lemma = en.verb.past(lemma)
                 except:
-                    pass
+                    RESULT.append(lemma)
         elif TENSE == 'PR':
                 try:
                     lemma = en.verb.present(lemma)
                 except:
-                    pass 
+                    RESULT.append(lemma)
         else: RESULT.append(lemma)
-
-        phrase = ' '.join(RESULT)
         
-        print '+++++++++++++++++++',phrase
+        self.FTense = None
 
+        print RESULT
+
+        #remove commas
+        phrase = ' '.join(RESULT)
+        phrase = phrase.split(',')[0] +' '+ lemma
+                
         self.RESULT[self.KEY].append(lemma) #store stem in first index
+
         self.RESULT[self.KEY].append(phrase) #store result as a list whose key is the original word in sentence
 
 
@@ -401,7 +405,6 @@ class Stemmer:
 
 if __name__ == '__main__':
     p = Stemmer()
-    print '###HERE###'
     if len(sys.argv) > 1:
         for f in sys.argv[1:]:
             infile = open(f, 'r')
@@ -411,7 +414,6 @@ if __name__ == '__main__':
                 line = infile.readline()
                 if line == '':
                     break
-                print "^^^^^^^^^^^^^^^",line
                 for c in line:
                     if c.isalpha():
                         word += c.lower()

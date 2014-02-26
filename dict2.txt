@@ -108,6 +108,8 @@ ikiwemo: in addition to, including #PP
 utumbuizaji: entertainment #N
 majeshi: armies #N
 pamban: handle, deal with #V
+pambana: fight #V
+pamb:fight #V
 yamepambana: dealt with #V
 pambana: deal #V
 vikali: harshly #ADV
@@ -139,7 +141,8 @@ shambulia:attack #N
 wahuni:criminals #N
 kocha:coach #N
 sema:say  #V
-itatamba:will shine,will win #V
+tamb:shine #V
+itatamba:will shine #V
 dhidi: against #PP
 operesheni: operation #N 
 okoa:save #V

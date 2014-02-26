@@ -7,6 +7,8 @@
 0.2 Jim    --Rearrange the V-ADV-N to V-N-ADV
     e.g. driving  [V]  dangerously  [ADV]  vehicle  [N]
     --multiple sentences
+    --' of ', '[PP]', ' town', '[N]', ' that ', '[PP]' --Should be: of that town
+    ---regions ', '[N]', ' different ', '[ADJ] swap ADJ and N
 
 2. Use a model to find best sentence for what we have at this time
 
