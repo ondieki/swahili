@@ -1,6 +1,11 @@
-1. Rearrange the V-ADV-N to V-N-ADV
+0.1 Bavin  --Work on the Stemmer
+		   --Gender
+
+0.2 Jim    --Rearrange the V-ADV-N to V-N-ADV
     e.g. driving  [V]  dangerously  [ADV]  vehicle  [N]
+    --multiple sentences
 
 2. Use a model to find best sentence for what we have at this time
 
 3. Start working on error analysis hopefully by sometime tonight 2/25/2014
+

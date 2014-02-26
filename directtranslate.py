@@ -31,20 +31,13 @@ def wordorder(sentence, swahili):
 	temp = copy.deepcopy(sentence)
 	for i in range(K):
 		word = sentence[i]
-		if word == '[V]' and sentence[i+1] == '[ADV]': #and sentence[i+4] == '[N]':
-			#stem = Stemmer()
-			#if len(word.split(',')) == 1: 
-			#	stem.input(swahili[i-1])
+		if word == '[V]':# and sentence[i+1] == '[ADV]': #and sentence[i+4] == '[N]':
+			stem = Stemmer()
+			s =''
+			if len(word.split(',')) == 1: 
+				s = stem.input(swahili[i-1])
 			
-			k = i+2
-
-			temp[k-1] = sentence[k+1]
-			temp[k] = '[N]'
-			temp[k+1] = sentence[k-1]
-			temp[k+2] = "[ADV]"
-			sentence = temp
-			#break;
-			print '####################', sentence
+			print '####################', s
 
 		if word == '[N]':
 			j = i + 2
