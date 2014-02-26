@@ -1,6 +1,8 @@
 baadhi:some #PP
 ya :of #PP
 afrika: Africa #N 
+andam: follow #V
+sema: say #V
 waandamanaji: protesters #N
 pinga: oppose #V
 wanaoipinga: who are opposing #SVO
@@ -87,7 +89,7 @@ taarifa: news, information #N
 vyombo: vessels, media, channels #N
 shirika: organization #N
 hilo: that #PP
-sem:sema #V
+sem:say #V
 linasema: says #V
 kuwa: that #PP
 abiria: passengers #N
@@ -104,7 +106,7 @@ sekta:sector #N
 mbali: various, different #ADJ
 ikiwemo: in addition to, including #PP
 utumbuizaji: entertainment #N
-majeshi:armies, #N
+majeshi: armies #N
 pamban: handle, deal with #V
 yamepambana: dealt with #V
 pambana: deal #V

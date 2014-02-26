@@ -9,6 +9,8 @@ bavin2009@gmail.com
 
 """
 
+import en
+import nltk
 import sys
 import string
 import re
@@ -165,31 +167,30 @@ class Stemmer:
             if token == "tu": return "us"
             if token == "mu":  return "you"
             if token == "u" : return "you"
-            if token == "a": return "he|she"
+            if token == "a": return "he"
             if token == "i": return "it"
+            if token == "li": return "it"     
+
 
 
         if K == 1:
             #Time Tokens
-            if token == "li": return "PT"    #"PT" #PAST TENSE
-            if token == "na": return "are"   #PRESENT TENSE
-            if token == "ta": return "will"  #FUTURE TENSE
-            if token == "ki": return "while" #"PT-CT|PR-CT"
-            if token == "mu": return "him|her"
-            if token == "me": return "has"
-
+            if token == "li": return " ,PT"      #"PT" #PAST TENSE
+            if token == "na": return "is,PR"   #PRESENT TENSE
+            if token == "ta": return "will,FT"  #FUTURE TENSE
+            if token == "ki": return "while, "   #"PT-CT|PR-CT"
+            if token == "mu": return "him, "
+            if token == "me": return "has, "
+            if token == "wa": return "them, "
 
 
         if K == 2:
             #Object Tokens
-            if token == "m": return "him|her"
+            if token == "m": return "him"
             if token == "wa": return "them"
             if token == "tu": return "us"
             if token == "ni": return "me"
             if token == "ki": return "it"
-    
-        #ku,
-
 
     def step2(self):
         """step2() checks to see the various prefixes
@@ -203,6 +204,9 @@ class Stemmer:
         
         original = self.b
 
+        #storing tense of the action, to be converted in phrase
+        TENSE = None
+
         RESULT = []
         sol = p2.findall(self.b)
         T = map(list,sol)
@@ -212,12 +216,28 @@ class Stemmer:
         if len(T) > 0: 
             L = T[0]
 
-        for t in L:
-            if len(t) == 0:
-                L.remove(t)
+        newL = []
 
+        for j in range(len(L)):
+            t = L[j]
+            if len(t) > 0:
+                newL.append(t)
+        
+        L = newL
+
+        print 'THE FOUND LIST: ',L
+        
         for i in range(len(L)):
             tok = L[i]
+
+            if i == 1:
+                w = self.STO(tok,i)
+                print w, " w######CHECKING*******tok ", tok, '  self.b: ' ,self.b
+
+                w = w.split(',')
+                TENSE = w[1]
+                print TENSE
+
             K = len(tok)
             if self.b == "kuwa": 
                 RESULT.append(self.STO(self.b,i))
@@ -236,9 +256,27 @@ class Stemmer:
         else:
             lemma = self.DICT[self.b]
             
-        print '+++++++++++++',RESULT,' ',lemma
+        lemma = lemma[0].split(' ')[0]
+
+        #convert tense of english version of lemma at this point    
+        if TENSE != None:
+            if TENSE == 'PT':
+                try:
+                    lemma = en.verb.past(lemma)
+                except:
+                    pass
+        elif TENSE == 'PR':
+                try:
+                    lemma = en.verb.present(lemma)
+                except:
+                    pass 
+        else: RESULT.append(lemma)
+
+        print '+++++++++++++',RESULT, ' STEM: ', lemma
+        phrase = ' '.join(RESULT)
+        
         self.RESULT[self.KEY].append(lemma) #store stem in first index
-        self.RESULT[self.KEY].append(RESULT) #store result as a list whose key is the original word in sentence
+        self.RESULT[self.KEY].append(phrase) #store result as a list whose key is the original word in sentence
 
 
     def step3(self):
@@ -358,7 +396,6 @@ class Stemmer:
 
         output += p.stem(word, 0,len(word)-1)
         print 'INPUT: ',word, ' OUTPUT==>',output,'====>',self.RESULT[word]
-        #sys.exit()
 
 
 if __name__ == '__main__':
