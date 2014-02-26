@@ -9,6 +9,7 @@ rush:throw #N
 walirusha: threw #V
 mawe: stones #V
 na: and #P
+zungumz: speak #V
 mabomu: bombs #N
 petroli: petrol #N
 shambu:attack #V
@@ -26,11 +27,13 @@ bunge:parliament #N
 ili: in order to #PP
 gari:car #N
 magari:cars #N
+andamana: march #V
 ingia:enter #V
 kuingia: enter #V
 robo: quarter #ADJ
 fainali: finals #N
 hitaj:need  #V
+jumuisha: involve #V
 kamil:complete, finish #V
 hitajika: require #V
 itahithitajika: it is required #V
@@ -88,8 +91,8 @@ sem:sema #V
 linasema: says #V
 kuwa: that #PP
 abiria: passengers #N
-wote: ali #ADJ
-wako: are,ako,yuko #PP
+wote: all #ADJ
+wako: are #PP
 kamati: committee #N
 hiyo: that  #PP
 jumui: involve #V
@@ -104,7 +107,8 @@ utumbuizaji: entertainment #N
 majeshi:armies, #N
 pamban: handle, deal with #V
 yamepambana: dealt with #V
-vikali: thoroughly #ADV
+pambana: deal #V
+vikali: harshly #ADV
 waasi: rebels #N
 eneo:region #N
 pik:cook #V

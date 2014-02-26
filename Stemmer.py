@@ -32,6 +32,7 @@ class Stemmer:
         self.k0 = 0
         self.j = 0   # j is a general offset into the string
         self.RESULT = defaultdict(lambda:[])
+        self.DICT = defaultdict(lambda:'')
 
     def cons(self, i):
         """cons(i) is TRUE <=> b[i] is a consonant."""
@@ -165,6 +166,8 @@ class Stemmer:
             if token == "mu":  return "you"
             if token == "u" : return "you"
             if token == "a": return "he|she"
+            if token == "i": return "it"
+
 
         if K == 1:
             #Time Tokens
@@ -173,6 +176,8 @@ class Stemmer:
             if token == "ta": return "will"  #FUTURE TENSE
             if token == "ki": return "while" #"PT-CT|PR-CT"
             if token == "mu": return "him|her"
+            if token == "me": return "has"
+
 
 
         if K == 2:
@@ -192,13 +197,17 @@ class Stemmer:
            #What remains is the root of the verb
         """
         p = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(o)?[a-z]{3}')
-        p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)?(ni|tu|ku|mu|wa|cho)?[a-z]{2}')
+        p2 = re.compile('(ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(me|li|ta|na)?(ni|tu|ku|mu|wa|cho)?[a-z]{2}')
 
         #regex 3 = (ni|u|a|tu|m|wa|i|li|ya|ki|vi|zi|ku|pa)(li|ta|na)(ni|tu|ku|mu|wa|cho)?[a-z]{4}
+        
+        original = self.b
 
         RESULT = []
         sol = p2.findall(self.b)
         T = map(list,sol)
+
+        print T, " ===> " ,original
 
         if len(T) > 0: 
             L = T[0]
@@ -217,7 +226,18 @@ class Stemmer:
                 RESULT.append(self.STO(tok,i)) #process the subject, tense and object
                 self.b = self.b[K:]
 
-        self.RESULT[self.KEY].append(self.b) #store stem in first index
+        lemma = ''
+        #if stemmed word not in dict, just extend stem as I may have accidentally chopped it off
+        if(self.b not in self.DICT): 
+            FOUND = self.KEY.index(self.b)
+            if(FOUND): 
+                text = self.KEY[FOUND:]
+                lemma = self.DICT[text]
+        else:
+            lemma = self.DICT[self.b]
+            
+        print '+++++++++++++',RESULT,' ',lemma
+        self.RESULT[self.KEY].append(lemma) #store stem in first index
         self.RESULT[self.KEY].append(RESULT) #store result as a list whose key is the original word in sentence
 
 
@@ -329,10 +349,8 @@ class Stemmer:
         print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
     
-    def input(self, line):
-        p = Stemmer()
-
-        print line[0]
+    def input(self, line,stem):
+        p = stem
 
         word = line[0]
 

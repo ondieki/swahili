@@ -10,6 +10,9 @@ from Stemmer import Stemmer
 dict = {}
 POSTAG = {}
 
+stem = Stemmer()
+stem.DICT = dict
+
 print '######USING DICT2 ########'
 
 with open( 'dict2.txt', 'r' ) as df:
@@ -19,25 +22,24 @@ with open( 'dict2.txt', 'r' ) as df:
 			elements = sl.split(':')
 			POSTAG[elements[0]] = elements[1].split('#')[1]
 			dict[ elements[0] ] = elements[1].split('#')[0].split(',')
+	stem.DICT = dict
+
 
 def wordorder(sentence, swahili):
 	#Transform V - N -ADJ to V-ADJ-N
 	
 	K = len(sentence)
-	print K, "+++++++++++++++++TRANSFORMING#############",tokens
-	
-	#stem = Stemmer
+	#print K, "+++++++++++++++++TRANSFORMING#############",tokens
 
 	temp = copy.deepcopy(sentence)
 	for i in range(K):
 		word = sentence[i]
 		if word == '[V]':# and sentence[i+1] == '[ADV]': #and sentence[i+4] == '[N]':
-			stem = Stemmer()
 			s =''
 			if len(word.split(',')) == 1: 
-				s = stem.input(swahili[i-1])
+				s = stem.input(swahili[i-1], stem)
 			
-			print '####################', s
+			#print '####################', s
 
 		if word == '[N]':
 			j = i + 2
