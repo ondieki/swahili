@@ -272,9 +272,10 @@ class Stemmer:
                     pass 
         else: RESULT.append(lemma)
 
-        print '+++++++++++++',RESULT, ' STEM: ', lemma
         phrase = ' '.join(RESULT)
         
+        print '+++++++++++++++++++',phrase
+
         self.RESULT[self.KEY].append(lemma) #store stem in first index
         self.RESULT[self.KEY].append(phrase) #store result as a list whose key is the original word in sentence
 
