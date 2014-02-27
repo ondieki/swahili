@@ -309,7 +309,7 @@ class Stemmer:
         print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
     
-    def input(self, line,stem):
+    def input(self, line, stem):
         p = stem
 
         word = line[0]

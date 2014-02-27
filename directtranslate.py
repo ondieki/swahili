@@ -36,9 +36,8 @@ def wordorder(sentence, swahili):
 		if word == '[V]':# and sentence[i+1] == '[ADV]': #and sentence[i+4] == '[N]':
 			s =''
 			if len(word.split(',')) == 1: 
-				s = stem.input(swahili[i-1], stem)
-			
-			#print '####################', s
+				s = stem.input(swahili[i-1],stem)
+			   print '####################', s
 
 		if word == '[N]':
 			j = i + 2
