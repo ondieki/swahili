@@ -27,7 +27,6 @@ with open( 'dict2.txt', 'r' ) as df:
 
 def wordorder(sentence, swahili):
 	#Transform V - N -ADJ to V-ADJ-N
-	
 	K = len(sentence)
 	#print K, "+++++++++++++++++TRANSFORMING#############",tokens
 
@@ -99,6 +98,9 @@ with open('sentence.txt', 'r') as sf:
 				swahili.append(word)
 				swahili.append('[N]')
 
-		print '+++++++++TRANSLATED=======',translated
 		reordered = wordorder(translated, swahili)
-		print ' '.join(reordered)
+		sent = ' '.join(reordered)
+		print '########SENTENCE ########\n', sent
+
+
+

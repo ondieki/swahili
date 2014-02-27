@@ -1,161 +1,161 @@
 baadhi:some #PP
-ya :of #PP
-afrika: Africa #N 
-andam: follow #V
-sema: say #V
-waandamanaji: protesters #N
-pinga: oppose #V
-wanaoipinga: who are opposing #SVO
-serikali: government #N
+ya:of #PP
+afrika:Africa #N 
+andam:follow #V
+sema:say #V
+waandamanaji:protesters #N
+pinga:oppose #V
+wanaoipinga:who are opposing #SVO
+serikali:government #N
 rush:throw #N
-walirusha: threw #V
-mawe: stones #V
-na: and #P
-zungumz: speak #V
-mabomu: bombs #N
-petroli: petrol #N
+walirusha:threw #V
+mawe:stones #V
+na:and #P
+zungumz:speak #V
+mabomu:bombs #N
+petroli:petrol #N
 shambu:attack #V
-kuwashambulia: to attack #V
-polisi: police #V
-kuwa: be #V
-waliokuwa: who were #N
-zuia: prevent #V
-wanawazuia: preventing them from #V
+kuwashambulia:to attack #V
+polisi:police #V
+kuwa:be #V
+waliokuwa:who were #N
+zuia:prevent #V
+wanawazuia:preventing them from #V
 andaman:protest #V
-kuandamana: protesting #V
-hadi: up to, towards #PP
-makao: building #N
+kuandamana:protesting #V
+hadi:up to, towards #PP
+makao:building #N
 bunge:parliament #N
-ili: in order to #PP
+ili:in order to #PP
 gari:car #N
 magari:cars #N
-andamana: march #V
+andamana:march #V
 ingia:enter #V
-kuingia: enter #V
-robo: quarter #ADJ
-fainali: finals #N
+kuingia:enter #V
+robo:quarter #ADJ
+fainali:finals #N
 hitaj:need  #V
-jumuisha: involve #V
+jumuisha:involve #V
 kamil:complete, finish #V
-hitajika: require #V
-itahithitajika: it is required #V
+hitajika:require #V
+itahithitajika:it is required #V
 chapa:beat #V
-vya: #PP
+vya:#PP
 walitumia:used #V
 chapaa:money #N
-kuichapa: to beat #V
-mabao: goals, bao #N
-matatu: three #ADJ
+kuichapa:to beat #V
+mabao:goals, bao #N
+matatu:three #ADJ
 chimba:dig  #V
-habari: news #N
-kwa: for #PP
-wachimbaji: excavators #ADJ
-migodi: mines #N
-hao: those #PP
+habari:news #N
+kwa:for #PP
+wachimbaji:excavators #ADJ
+migodi:mines #N
+hao:those #PP
 amesema:has said that #V
-tumia: used #V
-ngazi: ladder #N
-iliyotupwa: abandoned #ADJ
-tupa: discard #V
-ndani: inside #ADV
-ya: of #PP
-mugodi: mine #N
-huo: that #PP
+tumia:used #V
+ngazi:ladder #N
+iliyotupwa:abandoned #ADJ
+tupa:discard #V
+ndani:inside #ADV
+ya:of #PP
+mugodi:mine #N
+huo:that #PP
 nasu:free ##V
-kujinasua: escape, save oneself from #V
-siku: day #N
-jumatatu: Monday #N
-mwongoza: director #N
-filamu: film #N
-uingereza: UK #N
+kujinasua:escape, save oneself from #V
+siku:day #N
+jumatatu:Monday #N
+mwongoza:director #N
+filamu:film #N
+uingereza:UK #N
 pat:get #V
-alipata: received #V
+alipata:received #V
 tuzo:award #N
 bora:best #ADJ
 ambayo:which #PP
-ilipata: receive #V
-ushindi: victory #N
-shinda: win      #V
-mbili: two       #ADJ
-tengenez: make   #V
-utengenezaji: craftsmanship, production #N
-mzuri: good, high quality, excellent    #ADJ
-wa: of   #PP
-na: and  #CONJ
-ubunifu: creativity #N
-mavazi: costumes, clothes #N
-katika: in #PP
-taarifa: news, information #N
-vyombo: vessels, media, channels #N
-shirika: organization #N
-hilo: that #PP
+ilipata:receive #V
+ushindi:victory #N
+shinda:win      #V
+mbili:two       #ADJ
+tengenez:make   #V
+utengenezaji:craftsmanship, production #N
+mzuri:good, high quality, excellent    #ADJ
+wa:of   #PP
+na:and  #CONJ
+ubunifu:creativity #N
+mavazi:costumes, clothes #N
+katika:in #PP
+taarifa:news, information #N
+vyombo:vessels, media, channels #N
+shirika:organization #N
+hilo:that #PP
 sem:say #V
-linasema: says #V
-kuwa: that #PP
-abiria: passengers #N
-wote: all #ADJ
-wako: are #PP
-kamati: committee #N
-hiyo: that  #PP
-jumui: involve #V
+linasema:says #V
+kuwa:that #PP
+abiria:passengers #N
+wote:all #ADJ
+wako:are #PP
+kamati:committee #N
+hiyo:that  #PP
+jumui:involve #V
 tamb:shine #V
-itajumuisha: will involve #V
-watu: people #N
+itajumuisha:will involve #V
+watu:people #N
 kutoka:from #PP
 sekta:sector #N
-mbali: various, different #ADJ
-ikiwemo: in addition to, including #PP
-utumbuizaji: entertainment #N
-majeshi: armies #N
-pamban: handle, deal with #V
-pambana: fight #V
+mbali:various, different #ADJ
+ikiwemo:in addition to, including #PP
+utumbuizaji:entertainment #N
+majeshi:armies #N
+pamban:handle, deal with #V
+pambana:fight #V
 pamb:fight #V
-yamepambana: dealt with #V
-pambana: deal #V
-vikali: harshly #ADV
-waasi: rebels #N
+yamepambana:dealt with #V
+pambana:deal #V
+vikali:harshly #ADV
+waasi:rebels #N
 eneo:region #N
 pik:cook #V
-maeneo: regions #N
-tofauti: different #ADJ
-mji: town, city #N
-kongamano: forum,congress #N
-linasema: says #V
-abiria: passengers #N
-salama: safe #ADJ
-dhamiria: intend #V
-lilidhamiria: intended to #V
-kutafuta: look for #V
-mbinu: ways, means #N
+maeneo:regions #N
+tofauti:different #ADJ
+mji:town, city #N
+kongamano:forum,congress #N
+linasema:says #V
+abiria:passengers #N
+salama:safe #ADJ
+dhamiria:intend #V
+lilidhamiria:intended to #V
+kutafuta:look for #V
+mbinu:ways, means #N
 kulinda:protect #V
-wanyamapori: wild animals #N
-walio: who have, who are #PP
+wanyamapori:wild animals #N
+walio:who have, who are #PP
 hatari:danger #N
-kuangamia: extinction, death #N
+kuangamia:extinction, death #N
 ni:it is #PP
 wakati:time,season #N
 mgumu:hard, tough #ADJ
 ambayo:which #PP
-inaarifiwa: informed #V
+inaarifiwa:informed #V
 shambulia:attack #N
 wahuni:criminals #N
 kocha:coach #N
 sema:say  #V
 tamb:shine #V
 itatamba:will shine #V
-dhidi: against #PP
-operesheni: operation #N 
+dhidi:against #PP
+operesheni:operation #N 
 okoa:save #V
-chimba: dig #V
-madini: minerals #N
+chimba:dig #V
+madini:minerals #N
 kwama:stick,stuck #V
-kwenye: in the #PP
-shimo la mgodi: mine #N
+kwenye:in the #PP
+shimo la mgodi:mine #N
 sitish:stop #V
-yasitishwa: put to a halt for a while, temporarily suspended #V
-mwaka: one year #N
-baada: after #PP
-kumuua: killed #N
+yasitishwa:put to a halt for a while, temporarily suspended #V
+mwaka:one year #N
+baada:after #PP
+kumuua:killed #N
 ogop:afraid #V
 mpenzi:lover #N
 wake:his,her #PPN
@@ -172,17 +172,17 @@ kifo:death #N
 cha:of #PP
 mwanawe:child of #ADJ
 rais:president #N
-wa: of #PP
+wa:of #PP
 kusini:South #ADJ
 huenda:may, will possibly #V
 shitak:charge #V
-akashitakiwa: to be charged #V
+akashitakiwa:to be charged #V
 endesh:drive #V
 kuendesha:driving #V
-vibaya: dangerously #ADV
-gari: car, vehicle #N
+vibaya:dangerously #ADV
+gari:car, vehicle #N
 ua:kill #V
-kumuua: killed #V
+kumuua:killed #V
 mwanamke:woman #N
 mmoja:one #ADJ
 hayati:late #ADJ

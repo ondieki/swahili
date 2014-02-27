@@ -3,7 +3,7 @@
 """ Stemming Algorithm
 This is the stemming algorithm, 
 An algorithm for SWAHILI prefix and suffix stripping, providing you with the core componets of a word in Swahili,
-giving you the stem of the word that you query the program with
+giving you the stem of the word, the English phrase of the word in a dictionary
 
 bavin2009@gmail.com
 
@@ -50,21 +50,6 @@ class Stemmer:
                 return 1
         return 0
 
-    def cvc(self, i):
-        """cvc(i) is TRUE <=> i-2,i-1,i has the form consonant - vowel - consonant
-        and also if the second c is not w,x or y. this is used when trying to
-        restore an e at the end of a short  e.g.
-
-           cav(e), lov(e), hop(e), crim(e), but
-           snow, box, tray.
-        """
-        if i < (self.k0 + 2) or not self.cons(i) or self.cons(i-1) or not self.cons(i-2):
-            return 0
-        ch = self.b[i]
-        if ch == 'w' or ch == 'x' or ch == 'y':
-            return 0
-        return 1
-
     def starts(self,s):
         """starts(s) is TRUE <=> k0...k starts with string s"""
         if(self.b.find(s, 0, len(s)) != -1):
@@ -97,7 +82,6 @@ class Stemmer:
 
     def step1ab(self):
         """step1ab() gets rid of plurals and -ed or -ing. e.g.
-
            walipikia  -> alipik~
            walipikiana ->  walipik
            walichukuliwa -> walichuku
@@ -107,7 +91,6 @@ class Stemmer:
            #CASES
            pigiliwa
         """
-
 
         self.KEY = self.b
 
@@ -210,17 +193,17 @@ class Stemmer:
         #storing tense of the action, to be converted in phrase
         TENSE = None
 
+        #store the tokens here, which will be put together
         RESULT = []
         sol = p2.findall(self.b)
         T = map(list,sol)
-
-        print T, " ===> " ,original
 
         if len(T) > 0: 
             L = T[0]
 
         newL = []
 
+        #Remove spaces in matching result
         for j in range(len(L)):
             t = L[j]
             if len(t) > 0:
@@ -228,14 +211,13 @@ class Stemmer:
         
         L = newL
         
+        #Now construct english phrase using dictionary and STO Lookup function above
         for i in range(len(L)):
             tok = L[i]
-
             if i == 1:
                 w = self.STO(tok,i)
                 w = w.split(',')
                 TENSE = w[1]
-                print TENSE
 
             K = len(tok)
             if self.b == "kuwa": 
@@ -246,6 +228,10 @@ class Stemmer:
                 self.b = self.b[K:]
 
         lemma = ''
+
+        #remove any odd spaces around the stem
+        self.b = self.b.strip()
+    
         #if stemmed word not in dict, just extend stem as I may have accidentally chopped it off
         if(self.b not in self.DICT): 
             FOUND = self.KEY.index(self.b)
@@ -256,104 +242,38 @@ class Stemmer:
             lemma = self.DICT[self.b]
             
         lemma = lemma[0].split(' ')[0]
-                
+              
+
         #convert tense of english version of lemma at this point    
         if TENSE != None or self.FTense != None:
             if TENSE == 'PT' or self.FTense == 'PT':
                 try:
                     lemma = en.verb.past(lemma)
-                except:
                     RESULT.append(lemma)
+
+                except:
+                    pass
         elif TENSE == 'PR':
                 try:
                     lemma = en.verb.present(lemma)
-                except:
                     RESULT.append(lemma)
-        else: RESULT.append(lemma)
-        
+                except:
+                    pass
+        else: 
+            RESULT.append(lemma)
+
+        #Used with Nodebox English Engine to get Verb Tense
         self.FTense = None
 
-        print RESULT
-
-        #remove commas
+        #Join to form phrase, ignoring the comma used for storing the Tense of Verb
         phrase = ' '.join(RESULT)
         phrase = phrase.split(',')[0] +' '+ lemma
-                
+    
+        print " FOUND PHRASE ########", phrase
+             
+        #Append this to a dictionary, with key as original word, value as the phrase   
         self.RESULT[self.KEY].append(lemma) #store stem in first index
-
         self.RESULT[self.KEY].append(phrase) #store result as a list whose key is the original word in sentence
-
-
-    def step3(self):
-        """step3() dels with -ic-, -full, -ness etc. similar strategy to step2."""
-        if self.b[self.k] == 'e':
-            if self.ends("icate"):     self.r("ic")
-            elif self.ends("ative"):   self.r("")
-            elif self.ends("alize"):   self.r("al")
-        elif self.b[self.k] == 'i':
-            if self.ends("iciti"):     self.r("ic")
-        elif self.b[self.k] == 'l':
-            if self.ends("ical"):      self.r("ic")
-            elif self.ends("ful"):     self.r("")
-        elif self.b[self.k] == 's':
-            if self.ends("ness"):      self.r("")
-
-    def step4(self):
-        """step4() takes off -ant, -ence etc., in context <c>vcvc<v>."""
-        if self.b[self.k - 1] == 'a':
-            if self.ends("al"): pass
-            else: return
-        elif self.b[self.k - 1] == 'c':
-            if self.ends("ance"): pass
-            elif self.ends("ence"): pass
-            else: return
-        elif self.b[self.k - 1] == 'e':
-            if self.ends("er"): pass
-            else: return
-        elif self.b[self.k - 1] == 'i':
-            if self.ends("ic"): pass
-            else: return
-        elif self.b[self.k - 1] == 'l':
-            if self.ends("able"): pass
-            elif self.ends("ible"): pass
-            else: return
-        elif self.b[self.k - 1] == 'n':
-            if self.ends("ant"): pass
-            elif self.ends("ement"): pass
-            elif self.ends("ment"): pass
-            elif self.ends("ent"): pass
-            else: return
-        elif self.b[self.k - 1] == 'o':
-            if self.ends("ion") and (self.b[self.j] == 's' or self.b[self.j] == 't'): pass
-            elif self.ends("ou"): pass
-            # takes care of -ous
-            else: return
-        elif self.b[self.k - 1] == 's':
-            if self.ends("ism"): pass
-            else: return
-        elif self.b[self.k - 1] == 't':
-            if self.ends("ate"): pass
-            elif self.ends("iti"): pass
-            else: return
-        elif self.b[self.k - 1] == 'u':
-            if self.ends("ous"): pass
-            else: return
-        elif self.b[self.k - 1] == 'v':
-            if self.ends("ive"): pass
-            else: return
-        elif self.b[self.k - 1] == 'z':
-            if self.ends("ize"): pass
-            else: return
-        else:
-            return
-        if self.m() > 1:
-            self.k = self.j
-
-    def step5(self):
-        """step5() removes a final -e if m() > 1, and changes -ll to -l if
-        m() > 1.
-        """
-        print self.b
        
     def stem(self, p, i=None, j=None):
         """In stem(p,i,j), p is a char pointer, and the string to be stemmed
@@ -386,9 +306,6 @@ class Stemmer:
         if(K): 
             self.step2()
 
-        #self.step3()
-        #self.step4()
-        #self.step5()
         print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
     
