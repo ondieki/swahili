@@ -3,7 +3,7 @@ ya :of #PP
 afrika: Africa #N 
 waandamanaji: protesters #N
 pinga: oppose #V
-wanaoipinga: who are opposing #SVO
+wanaoipinga: who are opposing #V
 serikali: government #N
 rush:throw #N
 walirusha: threw #V
