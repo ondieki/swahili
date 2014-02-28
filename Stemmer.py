@@ -155,19 +155,19 @@ class Stemmer:
             if token == "i": return "it"
             if token == "li": return "it" 
             if token == "ya": 
-                self.FTense = 'PT'
+                #self.FTense = 'PT'
                 return "have"
 
 
         if K == 1:
             #Time Tokens
-            if token == "li": return " ,PT"      #"PT" #PAST TENSE
-            if token == "na": return "is,PR"     #PRESENT TENSE
-            if token == "ta": return "will,FT"   #FUTURE TENSE
-            if token == "ki": return "while, "   #"PT-CT|PR-CT"
-            if token == "mu": return "him, "
-            if token == "me": return " , "
-            if token == "wa": return "them, "
+            if token == "li": return "did,"      #"PT" #PAST TENSE
+            if token == "na": return "is,"     #PRESENT TENSE
+            if token == "ta": return "will,"   #FUTURE TENSE
+            if token == "ki": return "while,"   #"PT-CT|PR-CT"
+            if token == "mu": return "him,"
+            if token == "me": return "has,"
+            if token == "wa": return "them,"
 
 
         if K == 2:
@@ -243,34 +243,51 @@ class Stemmer:
             
         lemma = lemma[0].split(' ')[0]
               
+        #keep track if the lemma is transformed and added so we don't add twice
+        ADDED = 0
 
         #convert tense of english version of lemma at this point    
         if TENSE != None or self.FTense != None:
             if TENSE == 'PT' or self.FTense == 'PT':
                 try:
                     lemma = en.verb.past(lemma)
+                    ADDED = 1
                     RESULT.append(lemma)
-
                 except:
                     pass
         elif TENSE == 'PR':
                 try:
                     lemma = en.verb.present(lemma)
+                    ADDED = 1
                     RESULT.append(lemma)
                 except:
                     pass
-        else: 
-            RESULT.append(lemma)
-
+         
         #Used with Nodebox English Engine to get Verb Tense
         self.FTense = None
 
         #Join to form phrase, ignoring the comma used for storing the Tense of Verb
         phrase = ' '.join(RESULT)
-        phrase = phrase.split(',')[0] +' '+ lemma
     
-        print " FOUND PHRASE ########", phrase
-             
+        phrase = phrase.split(',')[0]
+        if(ADDED == 0):
+            phrase +=' '+ lemma
+    
+       # if lemma == "throw": 
+            #print lemma, " <=++++++++++++++ Lemma and Phrase +++++++++++=>", phrase
+            #sys.exit()
+        #If I have a suffix, I have some knowledge on objects at which action is directed
+        
+        OBJECTS = ''
+        if len(self.RESULT[self.KEY]) == 1:
+            OBJECTS == self.RESULT[self.KEY][0]
+            self.RESULT[self.KEY] = []
+
+
+        #print " self.RESULT[self.KEY]########", self.RESULT[self.KEY]
+
+        #print lemma, " <=++++++++++++++ Lemma and Result +++++++++++^^^2 =>" ,RESULT, "\n <== PHRASE ==> ",phrase
+    
         #Append this to a dictionary, with key as original word, value as the phrase   
         self.RESULT[self.KEY].append(lemma) #store stem in first index
         self.RESULT[self.KEY].append(phrase) #store result as a list whose key is the original word in sentence
@@ -306,18 +323,16 @@ class Stemmer:
         if(K): 
             self.step2()
 
-        print dict(self.RESULT)
         return self.b[self.k0:self.k+1]
     
-    def input(self, line, stem):
-        p = stem
-
+    def input(self, line):
+        p = self
         word = line[0]
-
         output = ''
-
         output += p.stem(word, 0,len(word)-1)
-        print 'INPUT: ',word, ' OUTPUT==>',output,'====>',self.RESULT[word]
+        if len(self.RESULT[word]) == 2 : 
+            return self.RESULT[word][1]
+        else: return None
 
 
 if __name__ == '__main__':
