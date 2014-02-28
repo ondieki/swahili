@@ -82,6 +82,11 @@ def wordorder(sentence, swahili, tokens):
 
 	return sentence		
 	
+def swapNounAdjective( sentence ):
+	tokens = asTokens( sentence )
+	postagged = postag( sentence )
+
+
 def asTokens( sentence ):
 	# Note: I tried the nltk tokenizer (requires the 'punkt' tokenizer model),
 	# but it returns the same results, except that the last word retains
@@ -89,7 +94,7 @@ def asTokens( sentence ):
 	# nltk_tokens = nltk.sent_tokenize( line.strip().lower() )
 	# print "(NLTK) TOKENS====",nltk_tokens
 
-	tokens = re.findall(r'\w+', sentence )
+	tokens = re.findall(r'\w+(?:/\w+)?', sentence )
 	# print "TOKENS====",tokens
 	return tokens
 
@@ -102,16 +107,51 @@ def postag( sentence ):
 		if t.lower() not in dict:
 			dict[t] = t
 			POSTAG[t.lower()] = 'N'
-			print 'adding unknown ',t+'/N', 'to dictionary'
+			# print 'adding unknown ',t+'/N', 'to dictionary'
 
 	taggedTokens = [t+'/'+POSTAG[t.lower()] for t in tokens]
-	print 'tagged:',taggedTokens
+	# print 'tagged:',taggedTokens
 	return asText(taggedTokens);
+
+def stripTags( sentence ):
+	tokens = asTokens(sentence)
+	return asText( [re.sub(r'(\w+)/\w+',r'\g<1>',t) for t in tokens] )
+
+
 
 # preprocess a swahili sentence
 def preprocess( sentence ):
 	return sentence.strip()	
 
+def swapNounAdjective( sentence ):
+	tokens = asTokens( sentence )
+	postagged = postag( sentence )
+	patNounAdj = r'(.*)/N\w+(.*?)/ADJ'
+	subst = re.sub(patNounAdj, '\g<2>/ADJ \g<1>/N', postagged )
+	# print 'subst:', subst
+	# print 'stripped: ', stripTags( subst )
+	# matchObj = re.match( patnounadj, postagged, re.I)
+	# if matchObj:
+	# 	print matchObj.groups()
+	# else:
+	# 	print 'no match ( N then ADJ )'
+	return subst
+
+def swapCollapseYa( sentence ):
+	tokens = asTokens( sentence )
+	postagged = postag( sentence )
+	# print 'postagged:',postagged
+	patNyaN = r'(\w+)/N\W+ya/PP\W+(\w+)/N'
+	subst = re.sub(patNyaN, '\g<2>/N \g<1>/N', postagged )
+	# print 'subst:', subst
+	# print 'stripped: ', stripTags( subst )
+	# matchObj = re.search( patNyaN, postagged, re.I)
+	# if matchObj:
+	# 	for g in matchObj.groups():
+	# 		print g
+	# else:
+	# 	print 'no match ( /N ya/PP /N )'
+	return stripTags( subst )
 
 def strategyWordOrder( sentence ):
 
@@ -151,6 +191,7 @@ def strategyWordOrder( sentence ):
 def lmScoring( sentence ):
 	# candidates is the list of candiate sentences formed by trying
 	# all possible definitions of all words with >1 translation
+	stemmer = Stemmer()
 	candidates = []
 
 	tokens = asTokens( sentence )
@@ -161,7 +202,14 @@ def lmScoring( sentence ):
 		if word.lower() in dict:
 
 			translations = dict[word.lower()]
-			# print 'word:',word,', translations:',translations
+			pos = POSTAG[word.lower()]
+
+			# print 'word:',word,', pos:',pos,', dictionary:',translations
+
+			# if pos == 'V':
+			# 	translations = stemmer.input([word.lower()])
+			# 	print 'stemmer returned: ',translations
+
 
 			old_candidates = candidates[:]
 			candidates = []
@@ -204,8 +252,9 @@ def lmScoring( sentence ):
 			# swahili.append([word])
 			# swahili.append("["+POSTAG[word.lower()]+"]")
 
-		else:
-			print word, "NOT IN DICTIONARY"
+		# else:
+			# print word, "NOT IN DICTIONARY"
+
 			# translated.append(word)
 			# translated.append("[N]")
 
@@ -218,29 +267,37 @@ def lmScoring( sentence ):
 	bestSentence = candidates[ neglobprob.index( min(neglobprob) ) ]
 	# print 'CANDIDATES (',len(candidates),')'
 	# for c in candidates:
-		# print ' '.join(c)
+	# 	print ' '.join(c)
 	# print 'bestSentence='
 	# print ' '.join(bestSentence)
+	return ' '.join(bestSentence)
 
 
 def applyStrategies( sentence ):
-	print '+++REORDERED===='
-	reordered = strategyWordOrder( sentence )
+	# print '+++REORDERED===='
+	# reordered = strategyWordOrder( sentence )
+	# sentence = swapNounAdjective( sentence )
+	sentence = swapCollapseYa( sentence )
 	s = lmScoring( sentence )
-	print '+++Best Score==='
+	# print '+++Best Score==='
+	# print s
 	return s
 
 # translation of sentence.txt
 def translate(sentenceFile):
 	with open(sentenceFile, 'r') as sf:
 		for line in sf:
-			line = preprocess( line )
+			pline = preprocess( line )
 			# print line
 			# tokens = re.findall(r'\w+', line.strip().lower())
-			tokens = asTokens( line )
-			postag( line )
+			# tokens = asTokens( pline )
 
-			s = applyStrategies( line )
+			print 'Swahili:'
+			print line
+			s = applyStrategies( pline )
+			print 'English:'
+			print s
+			print
 
 
 
