@@ -9,7 +9,7 @@ bavin2009@gmail.com
 
 """
 
-import en
+# import en
 import nltk
 import sys
 import string
@@ -231,6 +231,9 @@ class Stemmer:
 
         #remove any odd spaces around the stem
         self.b = self.b.strip()
+
+        # print 'self.b',self.b
+        # print 'self.KEY',self.KEY
     
         #if stemmed word not in dict, just extend stem as I may have accidentally chopped it off
         if(self.b not in self.DICT): 
@@ -241,6 +244,7 @@ class Stemmer:
         else:
             lemma = self.DICT[self.b]
             
+        # print 'lemma:',lemma
         lemma = lemma[0].split(' ')[0]
               
         #keep track if the lemma is transformed and added so we don't add twice
@@ -301,7 +305,7 @@ class Stemmer:
         i <= k <= j. To turn the stemmer into a module, declare 'stem' as
         extern, and delete the remainder of this file.
         """
-        print 'stemming...',p
+        # print 'stemming...',p
         if i is None:
             i = 0
         if j is None:
@@ -337,22 +341,28 @@ class Stemmer:
 
 if __name__ == '__main__':
     p = Stemmer()
-    if len(sys.argv) > 1:
-        for f in sys.argv[1:]:
-            infile = open(f, 'r')
-            while 1:
-                output = ''
-                word = ''
-                line = infile.readline()
-                if line == '':
-                    break
-                for c in line:
-                    if c.isalpha():
-                        word += c.lower()
-                    else:
-                        if word:
-                            output += p.stem(word, 0,len(word)-1)
-                            word = ''
-                        output += c.lower()
-                print output,
-            infile.close()
+    
+    print p.input( ['amesema'] )
+    print p.input( ['amezungumzia'] )
+    print p.input( ['kuendesha'] )
+    print p.input( ['kumuua'] )
+
+    # if len(sys.argv) > 1:
+    #     for f in sys.argv[1:]:
+    #         infile = open(f, 'r')
+    #         while 1:
+    #             output = ''
+    #             word = ''
+    #             line = infile.readline()
+    #             if line == '':
+    #                 break
+    #             for c in line:
+    #                 if c.isalpha():
+    #                     word += c.lower()
+    #                 else:
+    #                     if word:
+    #                         output += p.stem(word, 0,len(word)-1)
+    #                         word = ''
+    #                     output += c.lower()
+    #             print output,
+    #         infile.close()

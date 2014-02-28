@@ -7,13 +7,13 @@ wanaoipinga: who are opposing #V
 serikali: government #N
 rush:throw #N
 walirusha: threw #V
-mawe: stones #V
+mawe: stones #N
 na: and #P
 mabomu: bombs #N
 petroli: petrol #N
 shambu:attack #V
 kuwashambulia: to attack #V
-polisi: police #V
+polisi: police #N
 kuwa: be #V
 waliokuwa: who were #N
 zuia: prevent #V

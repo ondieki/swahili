@@ -23,7 +23,7 @@ except:
 	cPickle.dump(lm, open("lm.bin", "wb"))
 
 
-print '######USING DICT2 ########'
+# print '######USING DICT2 ########'
 
 with open( 'dict2.txt', 'r' ) as df:
 	for line in df:
@@ -37,50 +37,6 @@ with open( 'dict2.txt', 'r' ) as df:
 			# print 'word',word,'translations',translations
 			dict[ word ] = translations
 
-
-def wordorder(sentence, swahili, tokens):
-	#Transform V - N -ADJ to V-ADJ-N
-	K = len(sentence)
-	print K, "+++++++++++++++++TRANSFORMING#############",tokens
-	
-	#stem = Stemmer
-
-	temp = copy.deepcopy(sentence)
-	for i in range(K):
-		word = sentence[i]
-		j = i + 2
-		if word == '[N]':
-			if j < K: #possible to have an adjective after noun
-				if sentence[i+2] == '[ADJ]':
-					temp[i-1] = sentence[i+1]
-					temp[i] = '[ADJ]'
-					temp[i+1] = sentence[i-1]
-					temp[i+2] = "[N]"
-					sentence = temp
-					break;
-		elif word == '[ADJ]' and j < K and sentence[i+2] == '[N]':
-			print 'TO DO'
-			#swich adjectives and nouns
-			#break;
-		elif word == '[V]':#and sentence[i+2] == '[ADV]':
-			stem = Stemmer()
-			if len(word.split(',')) == 1: 
-				stem.input(swahili[i-1])
-			#temp[i-1] = sentence[i+1]
-			#temp[i] = '[ADV]'
-			#temp[i+1] = sentence[i-1]
-			#temp[i+2] = "[V]"
-			#sentence = temp
-			#print '####################', sentence
-		
-		#TAKE CARE OF PREPOSITIONAL PHRASES LIKE BAADA YA
-
-			#break;
-			#sys.exit()
-
-	#remove two consecutive prepositions e.g. kutoka katika --> kutoka
-
-	return sentence		
 	
 def swapNounAdjective( sentence ):
 	tokens = asTokens( sentence )
@@ -117,8 +73,6 @@ def stripTags( sentence ):
 	tokens = asTokens(sentence)
 	return asText( [re.sub(r'(\w+)/\w+',r'\g<1>',t) for t in tokens] )
 
-
-
 # preprocess a swahili sentence
 def preprocess( sentence ):
 	return sentence.strip()	
@@ -153,45 +107,12 @@ def swapCollapseYa( sentence ):
 	# 	print 'no match ( /N ya/PP /N )'
 	return stripTags( subst )
 
-def strategyWordOrder( sentence ):
-
-	swahili = []
-	translated = []
-
-	tokens = asTokens( sentence )
-	for i in range( len(tokens) ):
-
-		word = tokens[i]
-
-		if word.lower() in dict:
-
-			# translations = dict[word.lower()]
-			# print 'word:',word,', translations:',translations
-
-			translated.append("["+POSTAG[word.lower()]+"]")
-			
-			#swahili copy to use in stemmer
-			swahili.append([word])
-			swahili.append("["+POSTAG[word.lower()]+"]")
-
-		else:
-			print word, "NOT IN DICTIONARY"
-			translated.append(word)
-			translated.append("[N]")
-
-			#swahili copy to use in stemmer
-			swahili.append(word)
-			swahili.append('[N]')
-
-	reordered = wordorder(translated, swahili, asTokens(sentence) )
-
-	return reordered
-
 
 def lmScoring( sentence ):
 	# candidates is the list of candiate sentences formed by trying
 	# all possible definitions of all words with >1 translation
 	stemmer = Stemmer()
+	stemmer.DICT = dict
 	candidates = []
 
 	tokens = asTokens( sentence )
@@ -206,9 +127,16 @@ def lmScoring( sentence ):
 
 			# print 'word:',word,', pos:',pos,', dictionary:',translations
 
-			# if pos == 'V':
-			# 	translations = stemmer.input([word.lower()])
-			# 	print 'stemmer returned: ',translations
+			if pos == 'V':
+				try:
+					stemmer_translations = stemmer.input([word.lower()])
+					print 'stemmer returned: ',stemmer_translations
+					if stemmer_translations:
+						translations = [stemmer_translations]
+				except:
+					pass
+					print 'stemmer threw exception on: ', word.lower()
+
 
 
 			old_candidates = candidates[:]
@@ -243,24 +171,26 @@ def lmScoring( sentence ):
 					# print [c.extend(translations[0]) for c in old_candidates]
 					# candidates.extend(  [c.extend(translations[0]) for c in old_candidates] )
 
+		else:
+
+			# print 'CANDIDATES (',len(candidates),')'
+			# print candidates
+			# print word, "NOT IN DICTIONARY"
+			# words not in dictionary pass through untranslated
+			translations = [word]
+
+			old_candidates = candidates[:]
+			candidates = []
+
+			if len(old_candidates) == 0:
+				candidates.append( [translations[0]] )
+			else:
+				for c in old_candidates:
+					cnew = c + [translations[0]]
+					candidates.append( cnew )
 			# print 'CANDIDATES (',len(candidates),')'
 			# print candidates
 
-			# translated.append("["+POSTAG[word.lower()]+"]")
-			
-			# #swahili copy to use in stemmer
-			# swahili.append([word])
-			# swahili.append("["+POSTAG[word.lower()]+"]")
-
-		# else:
-			# print word, "NOT IN DICTIONARY"
-
-			# translated.append(word)
-			# translated.append("[N]")
-
-			# #swahili copy to use in stemmer
-			# swahili.append(word)
-			# swahili.append('[N]')
 
 	neglobprob = [lm.sentenceProbability( ' '.join(cs) ) for cs in candidates ]
 	# print neglobprob
@@ -293,7 +223,7 @@ def translate(sentenceFile):
 			# tokens = asTokens( pline )
 
 			print 'Swahili:'
-			print line
+			print pline
 			s = applyStrategies( pline )
 			print 'English:'
 			print s
